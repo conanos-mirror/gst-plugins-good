@@ -45,6 +45,8 @@ class GstpluginsgoodConan(ConanFile):
         self.requires.add("zlib/1.2.11@conanos/stable")
         self.requires.add("libvpx/1.7.0@conanos/stable")
         self.requires.add("cairo/1.15.12@conanos/stable")
+        self.requires.add("gdk-pixbuf/2.38.0@conanos/stable")
+
         #libjpeg-turbo
         #gdk-pixbuf
         #libdv
@@ -55,6 +57,7 @@ class GstpluginsgoodConan(ConanFile):
         self.build_requires("pixman/0.34.0@conanos/stable")
         self.build_requires("expat/2.2.5@conanos/stable")
         self.build_requires("libxml2/2.9.8@conanos/stable")
+        self.build_requires("libtiff/4.0.10@conanos/stable")
 
     def source(self):
         remotes = {'origin': 'https://github.com/GStreamer/gst-plugins-good.git'}
@@ -72,7 +75,7 @@ class GstpluginsgoodConan(ConanFile):
 
     def build(self):
         deps=["glib","gstreamer","gst-plugins-base","libpng","speex","libsoup","mpg123","lame","orc","wavpack","flac",
-              "taglib","bzip2","zlib","libvpx","cairo","libffi","freetype","fontconfig","pixman","expat","libxml2"]
+              "taglib","bzip2","zlib","libvpx","cairo","libffi","freetype","fontconfig","pixman","expat","libxml2","gdk-pixbuf","libtiff"]
         pkg_config_paths=[ os.path.join(self.deps_cpp_info[i].rootpath, "lib", "pkgconfig") for i in deps ]
         libpath = [ os.path.join(self.deps_cpp_info[i].rootpath, "lib") for i in ["bzip2","lame"] ]
         binpath = [ os.path.join(self.deps_cpp_info[i].rootpath, "bin") for i in ["orc"] ]
